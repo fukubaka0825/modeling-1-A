@@ -6,4 +6,5 @@ type Reservation struct{
     Id            int
     Start_date    timestamp.Timestamp
     End_date      timestamp.Timestamp
+    Room_id       int
 }
