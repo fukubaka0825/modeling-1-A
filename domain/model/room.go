@@ -1,7 +1,7 @@
 package domain
 
-type Room struct{
-    Id    int
-    Name  string
-
+type Room struct {
+	ID   int
+	Name string
+	MinimumReservedRooms MinimumReservedRoom
 }
