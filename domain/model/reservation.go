@@ -4,22 +4,44 @@ import (
     "github.com/labstack/gommon/log"
     "github.com/pkg/errors"
     "time"
+    "./enum/Priority"
 )
 
+// Reservation 予約
 type Reservation struct {
-	ID            int
-	StartDateTime ReservedTime
-	EndDateTime   ReservedTime
-	RoomID        int
-	UserID        int
+	id int
+	reservationPeriod ReservationPeriod
+	roomID int
+    userID int
+    priority Priority
 }
 
-type ReservedTime time.Time
+// Reservations 予約リスト
+type Reservations struct {
+    reservations := [...]Reservation
+}
 
-const START_RESERVED_HOUR = 9
-const END_RESERVED_HOUR = 18
+// Period 期間
+type Period struct {
+    StartDataTime time.Time
+    EndDataTime time.Time
+}
 
+// ReservationPeriod 予約期間
+type ReservationPeriod struct {
+    const StartHour = 9
+    const EndHour = 18
+    period Period
+}
 
+func newReservationPeriod(startAt time.Time, endAd time.Time) (*ReservationPeriod, error) {
+    if startAt > endAt && StartHour > startAt && EndHour < endAt {
+        return nill, errors.New('invalid Param.')
+    }
+    reservationPeriod := new(ReservationPeriod)
+    reservationPeriod.period := Period{statAt, endAt}
+    return reservationPeriod, nill
+}
 
 func (r ReservedTime) validate() error{
     meetingHour := time.Time(r).Hour()

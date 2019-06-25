@@ -1,0 +1,8 @@
+@startuml RequestReservedRoom
+start
+:;
+if (checkReservable(roomId, startAt, endAt)) then (true)
+else (false)
+endif
+stop
+@enduml
